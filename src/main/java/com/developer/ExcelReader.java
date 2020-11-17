@@ -35,13 +35,19 @@ public class ExcelReader {
 
 //        traversing to each cell
         for (int i = 1; i < lastRow+1; i++) {
+            while(sheet.getRow(i)==null) {
+                i++;
+            }
             XSSFRow row = sheet.getRow(i);
+
+//            creating a row list
             ArrayList rowList = new ArrayList();
             for (int j = 0; j < lastCell; j++) {
                 XSSFCell cell = row.getCell(j);
                 Object obj = cell!=null?cell.toString():null;
+
+//                adding a each row objects in the rowList
                 rowList.add(obj);
-//                System.out.print(cell!=null?cell.toString()+" |":0+" |");
             }
 
 
